@@ -30,17 +30,12 @@ public class EmployeeService {
         return employeeRepository.findById(id).get();
     }
 
-  /*  public List<Employee> findBySalary(Float minSalary, Float maxSalary){
-        TypedQuery<Employee> query=entityManager.createQuery(
-                        "SELECT e FROM br.com.fiap.model.Employee e WHERE e.salary BETWEEN :minSalary AND :maxSalary", Employee.class).
-
-                setParameter("minSalary", minSalary)
-                .setParameter("maxSalary", maxSalary);
-        return query.getResultList();
-    }*/
-
     public List<Employee> findBySalary(Float minSalary, Float maxSalary){
         return employeeRepository.findBySalary(minSalary,maxSalary);
+    }
+
+    public List<Object[]> findAverageSalary(){
+        return employeeRepository.findAverageSalary();
     }
 
     public Employee create(Employee employee){

@@ -45,6 +45,12 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeList);
     }
 
+    @GetMapping("/salary/average")
+    public ResponseEntity<List<Object[]>> getAverageSalary(){
+        List<Object[]> averageList = employeeService.findAverageSalary();
+        return ResponseEntity.ok(averageList);
+    }
+
     @PostMapping
     public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO){
         Employee employee = employeeService.create(employeeMapper.toEntity(employeeDTO));
